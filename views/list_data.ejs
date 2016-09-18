@@ -6,9 +6,9 @@
 
             <li class="clearfix">
                 <p class="col-2">MAC搜索</p>
-                <p class="col-10"><input type="text" class="key_in"/></p>
+                <p class="col-10"><input id="inputMac" type="text" value="<%= mac %>" class="key_in"/></p>
             </li>
-            <li><button href="#" class="btn_search">搜索</button></li>
+            <li><button id="btnSearch" class="btn_search">搜索</button></li>
 
         </ul>
 
@@ -35,50 +35,36 @@
                     <p class="col-1">APP</p>
                 </div>
                 <div class="col-3">
-                    <p class="col-6">MC地址</p>
-                    <p class="col-6">版本接收时间</p>
+                    <p class="col-6">Mac地址</p>
+                    <p class="col-6">接收时间</p>
                 </div>
             </li>
+
+            <% for(var i in data) { %>
+
             <li class="clearfix">
                 <div class="col-9">
-                    <p class="col-1">68</p>
-                    <p class="col-1">11427</p>
-                    <p class="col-1">0</p>
-                    <p class="col-1">39</p>
-                    <p class="col-1">30</p>
-                    <p class="col-1">0</p>
-                    <p class="col-1">1</p>
-                    <p class="col-1">258</p>
-                    <p class="col-1">149</p>
-                    <p class="col-1">0</p>
-                    <p class="col-1">0</p>
-                    <p class="col-1">0</p>
+                    <p class="col-1"><%= data[i].x1 %></p>
+                    <p class="col-1"><%= data[i].x2 %></p>
+                    <p class="col-1"><%= data[i].x9 %></p>
+                    <p class="col-1"><%= data[i].x10 %></p>
+                    <p class="col-1"><%= data[i].x11 %></p>
+                    <p class="col-1"><%= data[i].ferval %></p>
+                    <p class="col-1"><%= data[i].fei %></p>
+                    <p class="col-1"><%= data[i].x14 %></p>
+                    <p class="col-1"><%= data[i].aqi %></p>
+                    <p class="col-1"><%= data[i].x1 %></p>
+                    <p class="col-1"><%= data[i].x1 %></p>
+                    <p class="col-1"><%= data[i].x1 %></p>
                 </div>
                 <div class="col-3">
-                    <p class="col-6">accf23b87fbf</p>
-                    <p class="col-6">2016-09-09 13:11:20</p>
+                    <p class="col-6"><%= data[i].mac %></p>
+                    <p class="col-6"><%= data[i].created %></p>
                 </div>
             </li>
-            <li class="clearfix">
-                <div class="col-9">
-                    <p class="col-1">68</p>
-                    <p class="col-1">11427</p>
-                    <p class="col-1">0</p>
-                    <p class="col-1">39</p>
-                    <p class="col-1">30</p>
-                    <p class="col-1">0</p>
-                    <p class="col-1">1</p>
-                    <p class="col-1">258</p>
-                    <p class="col-1">149</p>
-                    <p class="col-1">0</p>
-                    <p class="col-1">0</p>
-                    <p class="col-1">0</p>
-                </div>
-                <div class="col-3">
-                    <p class="col-6">accf23b87fbf</p>
-                    <p class="col-6">2016-09-09 13:11:20</p>
-                </div>
-            </li>
+
+            <% } %>
+
         </ul>
 <!--
         <div class="paging_box clearfix">
@@ -95,8 +81,13 @@
     </div>
 
 </div>
-
 <div class="footer">苏ICP备16043018号-1 版权所有 © 昆山市七星博士环境科技股份有限公司</div>
-
 </body>
+<script>
+    $(function() {
+        $("#btnSearch").click(function() {
+            window.location.href="/data/list?mac=" + $("#inputMac").val();
+        });
+    });
+</script>
 </html>
