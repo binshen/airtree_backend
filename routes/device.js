@@ -2,7 +2,8 @@
 module.exports = function (app, router, wrap, mongoose) {
 
     router.get('/list', wrap(function* (req, res, next) {
-        res.render('list_device', { page: "device" });
+        var user = req.session.login_user;
+        res.render('list_device', { page: "device", user: user });
     }));
 
     app.use('/device', router);
