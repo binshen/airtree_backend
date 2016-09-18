@@ -13,85 +13,20 @@
                 <p class="col-2 t_center">发布时间</p>
                 <p class="col-1">编辑</p>
             </li>
-            <li class="clearfix">
-                <p class="col-4">家庭环境指数监测仪FEI-M1</p>
-                <p class="col-4">Master.UI.1.2016.08.11.01s</p>
-                <p class="col-1 t_center">QY</p>
-                <p class="col-2 t_center">2016-08-11</p>
-                <p class="col-1 clearfix"><a class="btn_revise" href="#"></a><a class="btn_delete" href="dialog1.html"></a></p>
-            </li>
-            <li class="clearfix">
-                <p class="col-4">家庭环境指数监测仪FEI-M1</p>
-                <p class="col-4">Master.UI.1.2016.08.11.01s</p>
-                <p class="col-1 t_center">QY</p>
-                <p class="col-2 t_center">2016-08-11</p>
-                <p class="col-1 clearfix"><a class="btn_revise" href="#"></a><a class="btn_delete" href="#"></a></p>
-            </li>
 
+            <% for(var i in version) { %>
             <li class="clearfix">
-                <p class="col-4">家庭环境指数监测仪FEI-M1</p>
-                <p class="col-4">Master.UI.1.2016.08.11.01s</p>
-                <p class="col-1 t_center">QY</p>
-                <p class="col-2 t_center">2016-08-11</p>
-                <p class="col-1 clearfix"><a class="btn_revise" href="#"></a><a class="btn_delete" href="#"></a></p>
+                <p class="col-4"><% if(version[i].type==1){ %>民用级-主机<% } else if(version[i].type==2){ %>民用级-从机<% } else { %>工业级<% } %></p>
+                <p class="col-4"><%= version[i].ver %></p>
+                <p class="col-1 t_center"><%= version[i].dev %></p>
+                <p class="col-2 t_center"><%= moment(version[i].created).format('YYYY-MM-DD hh:mm:ss') %></p>
+                <p class="col-1 clearfix">
+                    <a class="btn_revise" href="#"></a>
+                    <a class="btn_delete" href="dialog1.html"></a>
+                </p>
             </li>
+            <% } %>
 
-            <li class="clearfix">
-                <p class="col-4">家庭环境指数监测仪FEI-M1</p>
-                <p class="col-4">Master.UI.1.2016.08.11.01s</p>
-                <p class="col-1 t_center">QY</p>
-                <p class="col-2 t_center">2016-08-11</p>
-                <p class="col-1 clearfix"><a class="btn_revise" href="#"></a><a class="btn_delete" href="#"></a></p>
-            </li>
-            <li class="clearfix">
-                <p class="col-4">家庭环境指数监测仪FEI-M1</p>
-                <p class="col-4">Master.UI.1.2016.08.11.01s</p>
-                <p class="col-1 t_center">QY</p>
-                <p class="col-2 t_center">2016-08-11</p>
-                <p class="col-1 clearfix"><a class="btn_revise" href="#"></a><a class="btn_delete" href="#"></a></p>
-            </li>
-            <li class="clearfix">
-                <p class="col-4">家庭环境指数监测仪FEI-M1</p>
-                <p class="col-4">Master.UI.1.2016.08.11.01s</p>
-                <p class="col-1 t_center">QY</p>
-                <p class="col-2 t_center">2016-08-11</p>
-                <p class="col-1 clearfix"><a class="btn_revise" href="#"></a><a class="btn_delete" href="#"></a></p>
-            </li>
-            <li class="clearfix">
-                <p class="col-4">家庭环境指数监测仪FEI-M1</p>
-                <p class="col-4">Master.UI.1.2016.08.11.01s</p>
-                <p class="col-1 t_center">QY</p>
-                <p class="col-2 t_center">2016-08-11</p>
-                <p class="col-1 clearfix"><a class="btn_revise" href="#"></a><a class="btn_delete" href="#"></a></p>
-            </li>
-            <li class="clearfix">
-                <p class="col-4">家庭环境指数监测仪FEI-M1</p>
-                <p class="col-4">Master.UI.1.2016.08.11.01s</p>
-                <p class="col-1 t_center">QY</p>
-                <p class="col-2 t_center">2016-08-11</p>
-                <p class="col-1 clearfix"><a class="btn_revise" href="#"></a><a class="btn_delete" href="#"></a></p>
-            </li>
-            <li class="clearfix">
-                <p class="col-4">家庭环境指数监测仪FEI-M1</p>
-                <p class="col-4">Master.UI.1.2016.08.11.01s</p>
-                <p class="col-1 t_center">QY</p>
-                <p class="col-2 t_center">2016-08-11</p>
-                <p class="col-1 clearfix"><a class="btn_revise" href="#"></a><a class="btn_delete" href="#"></a></p>
-            </li>
-            <li class="clearfix">
-                <p class="col-4">家庭环境指数监测仪FEI-M1</p>
-                <p class="col-4">Master.UI.1.2016.08.11.01s</p>
-                <p class="col-1 t_center">QY</p>
-                <p class="col-2 t_center">2016-08-11</p>
-                <p class="col-1 clearfix"><a class="btn_revise" href="#"></a><a class="btn_delete" href="#"></a></p>
-            </li>
-            <li class="clearfix">
-                <p class="col-4">家庭环境指数监测仪FEI-M1</p>
-                <p class="col-4">Master.UI.1.2016.08.11.01s</p>
-                <p class="col-1 t_center">QY</p>
-                <p class="col-2 t_center">2016-08-11</p>
-                <p class="col-1 clearfix"><a class="btn_revise" href="#"></a><a class="btn_delete" href="#"></a></p>
-            </li>
         </ul>
 <!--
         <div class="paging_box clearfix">

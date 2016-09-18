@@ -13,6 +13,7 @@
 <div class="pop">
     <h3 class="pop_t">上传新版本</h3>
     <form method="post" id="frmVersion" enctype="multipart/form-data">
+        <input type="hidden" name="v_id" id="v_id" value="" />
         <ul class="pop_c clearfix">
             <li class="clearfix">
                 <p class="col-2">选择类别</p>
@@ -39,7 +40,7 @@
             <li class="clearfix">
                 <p class="col-2">上传文件</p>
                 <div class="col-10 up_box">
-                    <a class="pop_btn_up">选择文件<input type="file" class="pop_file" id="uploadfile" /></a>
+                    <a class="pop_btn_up">选择文件<input type="file" name="uploadfile" class="pop_file" id="uploadfile" /></a>
                     <label class="pop_up_name1" id="filename">上传文件的名字</label>
     <!--
                     <div class="pop_up_speed">
@@ -55,10 +56,11 @@
 
                 </div>
             </li>
+
             <li class="clearfix">
-                <p class="col-2">文件大小(KB)</p>
+                <p class="col-2">开发者</p>
                 <p class="col-10">
-                    <input type="text" name="size" id="size"/>
+                    <input type="text" name="dev" id="dev"/>
                 </p>
             </li>
 
@@ -108,7 +110,7 @@
             layer.confirm('确定要提交新的版本?', {
                 btn: ['确定', '取消']
             }, function () {
-                $("#frmVersion").attr("action", "/version/add");
+                $("#frmVersion").attr("action", "/version/edit");
                 $("#frmVersion").submit();
             }, function () {});
         });

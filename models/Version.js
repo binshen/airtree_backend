@@ -6,11 +6,11 @@ module.exports = function (mongoose) {
         ver: { type:String, required:true },
         md5: { type:String },
         size: { type:String },
-        developer: { type:String },
+        dev: { type:String },
         file: { type:String, required:true },
         sys: { type:String },
         wlan: { type:String },
-        created: { type:Date }
+        created: { type:Number }
     });
     return mongoose.model('Version', version);
 };
