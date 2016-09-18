@@ -22,7 +22,7 @@
                 <p class="col-2 t_center"><%= moment(version[i].created).format('YYYY-MM-DD hh:mm:ss') %></p>
                 <p class="col-1 clearfix">
                     <a class="btn_revise" href="/version/upload/<%= version[i]._id %>"></a>
-                    <a class="btn_delete" href="dialog1.html"></a>
+                    <a class="btn_delete" href="javascript:void(0)" onclick="deleteVersion('<%= version[i]._id %>');"></a>
                 </p>
             </li>
             <% } %>
@@ -39,4 +39,13 @@
 </div>
 <%- include layouts/footer.ejs %>
 </body>
+<script>
+    function deleteVersion(id) {
+        layer.confirm('确定要删除该版本?', {
+            btn: ['确定', '取消']
+        }, function () {
+            window.location.href = "/version/delete/" + id;
+        }, function () {});
+    }
+</script>
 </html>

@@ -108,7 +108,11 @@
                 layer.msg("请输入开发者信息");
                 return;
             }
-            layer.confirm('确定要提交新的版本?', {
+            var message = '确定要修改该版本?';
+            if (v_id == "") {
+                message = '确定要创建新版本?';
+            }
+            layer.confirm(message, {
                 btn: ['确定', '取消']
             }, function () {
                 $("#frmVersion").attr("action", "/version/edit");

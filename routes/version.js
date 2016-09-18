@@ -74,5 +74,16 @@ module.exports = function (app, router, wrap, mongoose) {
         res.render('upload_version', { page: "version", user: req.session.login_user, version: version });
     }));
 
+    router.get('/delete/:v_id', wrap(function* (req, res, next) {
+        var v_id = req.params.v_id;
+        var version = yield Version.findById(v_id).exec();
+        var path = __dirname + '/../public/files/' + version.file;
+        if(fs.existsSync(path)) {
+            fs.unlinkSync(path);
+        }
+        yield version.remove();
+        res.redirect('/version/list');
+    }));
+
     app.use('/version', router);
 };
