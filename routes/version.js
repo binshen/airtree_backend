@@ -14,7 +14,7 @@ module.exports = function (app, router, wrap, mongoose) {
 
     router.get('/upload', wrap(function* (req, res, next) {
 
-        res.render('upload_version', { page: "version", user: req.session.login_user });
+        res.render('upload_version', { page: "version", user: req.session.login_user, version: {} });
     }));
 
 /*
@@ -43,13 +43,14 @@ module.exports = function (app, router, wrap, mongoose) {
             var doc = new Version(data);
             yield doc.save();
         } else {
-            var doc = yield Version.findOne({_id: v_id}).exec();
+            var doc = yield Version.findById(v_id).exec();
             if(doc != null) {
-                fs.unlinkSync(file.path);
-
-                doc.size = Math.ceil(file.size / 1000);
-                doc.file = file.filename;
+                fs.unlinkSync(doc.path);
                 doc.created = Date.now();
+                if(file != null) {
+                    doc.size = Math.ceil(file.size / 1000);
+                    doc.file = file.filename;
+                }
                 yield doc.save();
             }
         }

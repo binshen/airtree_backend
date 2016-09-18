@@ -64,7 +64,7 @@ app.use(session({
 
 mongoose.Promise = global.Promise;
 mongoose.connect(config.mongodb.uri);
-mongoose.set('debug', false);
+mongoose.set('debug', true);
 
 // app.use(session({
 //   secret: 'moral2016_airtree_backend',

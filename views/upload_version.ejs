@@ -13,7 +13,7 @@
 <div class="pop">
     <h3 class="pop_t">上传新版本</h3>
     <form method="post" id="frmVersion" enctype="multipart/form-data">
-        <input type="hidden" name="v_id" id="v_id" value="" />
+        <input type="hidden" name="v_id" id="v_id" value="<%= version._id %>" />
         <ul class="pop_c clearfix">
             <li class="clearfix">
                 <p class="col-2">选择类别</p>
@@ -26,14 +26,14 @@
                 </p>
                 <p class="col-2 p_l_left">版本</p>
                 <p class="col-4">
-                    <input type="text" name="ver" id="ver"/>
+                    <input type="text" name="ver" id="ver" value="<%= version.ver %>"/>
                 </p>
             </li>
 
             <li class="clearfix">
                 <p class="col-2">MD5</p>
                 <p class="col-10">
-                    <input type="text" name="md5" id="md5" />
+                    <input type="text" name="md5" id="md5" value="<%= version.md5 %>"/>
                 </p>
             </li>
 
@@ -41,7 +41,7 @@
                 <p class="col-2">上传文件</p>
                 <div class="col-10 up_box">
                     <a class="pop_btn_up">选择文件<input type="file" name="uploadfile" class="pop_file" id="uploadfile" /></a>
-                    <label class="pop_up_name1" id="filename">上传文件的名字</label>
+                    <label class="pop_up_name1" id="filename"></label>
     <!--
                     <div class="pop_up_speed">
                         <p class="pop_up_name">xxx.xx（1.26M）</p>
@@ -60,15 +60,19 @@
             <li class="clearfix">
                 <p class="col-2">开发者</p>
                 <p class="col-10">
-                    <input type="text" name="dev" id="dev"/>
+                    <input type="text" name="dev" id="dev" value="<%= version.dev %>"/>
                 </p>
             </li>
 
             <li class="clearfix">
                 <p class="col-2">更新日志</p>
                 <p class="col-10">
-                    <textarea rows="3" placeholder="系统" name="sys" id="sys"/></textarea>
-                    <textarea rows="1" placeholder="WLAN" name="wlan" id="wlan"/></textarea>
+                    <textarea rows="3" placeholder="系统" name="sys" id="sys"/>
+                        <%= version.sys %>
+                    </textarea>
+                    <textarea rows="1" placeholder="WLAN" name="wlan" id="wlan"/>
+                        <%= version.wlan %>
+                    </textarea>
                 </p>
             </li>
         </ul>
@@ -97,14 +101,15 @@
                 layer.msg("请输入MD5");
                 return;
             }
+            var v_id = $("#v_id").val();
             var uploadfile = $("#uploadfile").val();
-            if (uploadfile == "") {
+            if (v_id == "" && uploadfile == "") {
                 layer.msg("请选择要上传的文件");
                 return;
             }
-            var size = $("#size").val();
-            if (size == "") {
-                layer.msg("请输入文件大小(单位：KB)");
+            var dev = $("#dev").val();
+            if (dev == "") {
+                layer.msg("请输入开发者信息");
                 return;
             }
             layer.confirm('确定要提交新的版本?', {

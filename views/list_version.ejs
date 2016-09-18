@@ -21,7 +21,7 @@
                 <p class="col-1 t_center"><%= version[i].dev %></p>
                 <p class="col-2 t_center"><%= moment(version[i].created).format('YYYY-MM-DD hh:mm:ss') %></p>
                 <p class="col-1 clearfix">
-                    <a class="btn_revise" href="#"></a>
+                    <a class="btn_revise" href="/version/upload/<%= version[i]._id %>"></a>
                     <a class="btn_delete" href="dialog1.html"></a>
                 </p>
             </li>
