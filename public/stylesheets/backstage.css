@@ -140,10 +140,12 @@ body{background-color:#d8d8d8 !important;font-family:"Microsoft Yahei"!important
     height:40px;line-height:40px;width:40%;text-align:center;border-radius:3px;border:1px solid #cdd8dd;
     background-color:#f8f8f8;
     background:-webkit-gradient(linear, left top, left bottom, color-stop(50%,#fff), color-stop(100%,#eef2f5));
-    display:inline-block; position:relative; overflow:hidden;}
+    display:inline-block; position:relative; overflow:hidden}
 .pop_btn_up:hover{background-color:#dde6ea;background:-webkit-gradient(linear, left top, left bottom, color-stop(50%,#fff), color-stop(100%,#e1e8ee))}
 
 .pop_file{margin-right:8px;height:40px;line-height:40px;width:100%;position:absolute; right:0; top:0; font-size:100px; opacity:0; filter:alpha(opacity=0);}
+
+.pop_up_name1{display:block}
 
 .pop_up_speed{width:100%;clear:both}
 .pop_up_bar{width:100%;height:18px;line-height:18px;display:block;margin-top:10px;border-radius:8px;background-color:#ddd;position:relative}
