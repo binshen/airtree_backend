@@ -8,7 +8,7 @@ module.exports = function (app, router, wrap, mongoose) {
     var Version = mongoose.model('Version');
 
     router.get('/list', wrap(function* (req, res, next) {
-        var version = yield Version.find().exec();
+        var version = yield Version.find().sort({created: -1}).exec();
         res.render('list_version', { page: "version", user: req.session.login_user, version: version, moment: moment });
     }));
 
@@ -39,6 +39,7 @@ module.exports = function (app, router, wrap, mongoose) {
         if(v_id == "") {
             data.size = Math.ceil(file.size / 1000);
             data.file = file.filename;
+            data.origin = file.originalname;
             data.created = Date.now();
             var doc = new Version(data);
             yield doc.save();
@@ -59,6 +60,7 @@ module.exports = function (app, router, wrap, mongoose) {
                 if(file != null) {
                     doc.size = Math.ceil(file.size / 1000);
                     doc.file = file.filename;
+                    data.origin = file.originalname;
                 }
                 yield doc.save();
             }

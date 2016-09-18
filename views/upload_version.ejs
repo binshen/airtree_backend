@@ -41,7 +41,7 @@
                 <p class="col-2">上传文件</p>
                 <div class="col-10 up_box">
                     <a class="pop_btn_up">选择文件<input type="file" name="uploadfile" class="pop_file" id="uploadfile" /></a>
-                    <label class="pop_up_name1" id="filename"></label>
+                    <label class="pop_up_name1" id="filename"><%= version.origin %></label>
     <!--
                     <div class="pop_up_speed">
                         <p class="pop_up_name">xxx.xx（1.26M）</p>
@@ -119,8 +119,9 @@
         $("#uploadfile").change(function() {
             var file = $(this).val();
             var fileName=file.replace(/^.+?\\([^\\]+?)(\.[^\.\\]*?)?$/gi,"$1");  //正则表达式获取文件名，不带后缀
-            var fileExt=file.replace(/.+\./,"");
-            $("#filename").text(fileName + "." + fileExt);
+            //var fileExt=file.replace(/.+\./,"");
+            //$("#filename").text(fileName + "." + fileExt);
+            $("#filename").text(fileName);
         });
     });
 </script>

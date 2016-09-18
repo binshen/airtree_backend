@@ -8,6 +8,7 @@ module.exports = function (mongoose) {
         size: { type:String },
         dev: { type:String },
         file: { type:String, required:true },
+        origin: { type:String },
         sys: { type:String },
         wlan: { type:String },
         created: { type:Number }
