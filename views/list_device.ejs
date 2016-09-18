@@ -1,0 +1,114 @@
+<%- include layouts/header.ejs %>
+
+        <h3 class="title1 clearfix">条件搜索</h3>
+
+        <ul class="search2">
+
+            <li class="clearfix">
+                <p class="col-2">发布时间</p>
+                <div class="col-10">
+                    <div class="controls">
+                        <div class="input-prepend input-group">
+                            <span class="add-on input-group-addon"><img src="/images/i_date.png" /> </span>
+                            <input type="text" name="reservation" id="reservationtime" class="form-control" value="08/01/2013 1:00 PM - 08/01/2013 1:30 PM"/>
+                        </div>
+                    </div>
+
+                    <script type="text/javascript">
+                        $(document).ready(function() {
+                            $('#reservationtime').daterangepicker({
+                                timePicker: true,
+                                timePickerIncrement: 30,
+                                format: 'MM/DD/YYYY h:mm A'
+                            }, function(start, end, label) {
+                                console.log(start.toISOString(), end.toISOString(), label);
+                            });
+                        });
+                    </script>
+                </div>
+
+            </li>
+            <li class="clearfix">
+                <p class="col-2">帐户名称</p>
+                <p class="col-10"><input type="text" class="key_in"/></p>
+            </li>
+            <li><button href="#" class="btn_search">搜索</button></li>
+
+        </ul>
+
+        <!--<a href="#" class="switch"><img src="images/ico_arrow.png"/></a>-->
+        <a href="#" class="switch"><img src="/images/ico_arrow2.png"/></a>
+
+        <!--搜索结果1-->
+        <div class="search2_result t_center">
+            抱歉，暂无您搜索的信息~<br/>您可以尝试扩大搜索范围
+        </div>
+
+        <!--搜索结果2-->
+        <div class="search2_result">
+            搜索<span>08/01/2013 1:00 PM - 08/01/2013 1:30 PM</span><span>xxx</span>结果如下：
+        </div>
+
+
+        <h3 class="title1">设备列表</h3>
+
+        <ul class="list1">
+            <li class="clearfix top">
+                <p class="col-4">MAC地址</p>
+                <p class="col-4">帐户名称</p>
+                <p class="col-2 t_center">xx</p>
+                <p class="col-2 t_center">发布时间</p>
+            </li>
+            <li class="clearfix">
+                <p class="col-4">家庭环境指数监测仪FEI-M1</p>
+                <p class="col-4">Master.UI.1.2016.08.11.01s</p>
+                <p class="col-2 t_center">QY</p>
+                <p class="col-2 t_center">2016-08-11</p>
+            </li>
+            <li class="clearfix">
+                <p class="col-4">家庭环境指数监测仪FEI-M1</p>
+                <p class="col-4">Master.UI.1.2016.08.11.01s</p>
+                <p class="col-2 t_center">QY</p>
+                <p class="col-2 t_center">2016-08-11</p>
+            </li>
+            <li class="clearfix">
+                <p class="col-4">家庭环境指数监测仪FEI-M1</p>
+                <p class="col-4">Master.UI.1.2016.08.11.01s</p>
+                <p class="col-2 t_center">QY</p>
+                <p class="col-2 t_center">2016-08-11</p>
+            </li>
+            <li class="clearfix">
+                <p class="col-4">家庭环境指数监测仪FEI-M1</p>
+                <p class="col-4">Master.UI.1.2016.08.11.01s</p>
+                <p class="col-2 t_center">QY</p>
+                <p class="col-2 t_center">2016-08-11</p>
+            </li>
+            <li class="clearfix">
+                <p class="col-4">家庭环境指数监测仪FEI-M1</p>
+                <p class="col-4">Master.UI.1.2016.08.11.01s</p>
+                <p class="col-2 t_center">QY</p>
+                <p class="col-2 t_center">2016-08-11</p>
+            </li>
+
+        </ul>
+
+<!--
+        <div class="paging_box clearfix">
+            <ul class="paging"><li class="page_on">1</li><li><a href="#">2</a></li><li><a href="#">3</a></li><li><a href="#">4</a></li><li><a href="#">5</a></li><li><a href="#">下一页</a>
+                </li><li>共XX页</li><li>到第<input type="text"/><button>确定</button></li></ul>
+        </div>
+
+        <div class="paging_box clearfix">
+            <ul class="paging"><li><a href="#">上一页</a></li><li><a href="#">1</a></li><li class="page_on">2</li><li><a href="#">3</a></li><li><a href="#">4</a></li><li><a href="#">下一页</a>
+                </li><li>共XX页</li><li>到第<input type="text"/><button>确定</button></li></ul>
+        </div>
+-->
+
+    </div>
+
+</div>
+
+<div class="footer">苏ICP备16043018号-1 版权所有 © 昆山市七星博士环境科技股份有限公司</div>
+
+</body>
+</html>
