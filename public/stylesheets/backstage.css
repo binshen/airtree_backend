@@ -37,9 +37,10 @@ body{background-color:#d8d8d8 !important;font-family:"Microsoft Yahei"!important
 .menu li img{float:left;padding:0 10px 0 40px}
 
 .nav{height:90px;background-color:#fff}
-.user_name{width:100px;line-height:36px;height:36px;text-align:right;overflow:hidden;float:right;margin:26px 0 0 0}
-.user_pic{width:60px;height:60px;border-radius:50%;float:right;margin:14px 30px 0 10px;padding:0!important}
-.user_pic img{width:60px;height:60px;border-radius:50%}
+.user_name{width:130px;padding:4px 10px 4px 20px;line-height:20px;text-align:left;float:left;margin:16px 0 0 0;border:1px solid #eee;border-radius:24px}
+.user_name span{height:20px;width:100px;overflow:hidden;display:block}
+.user_pic{width:48px;height:48px;border-radius:50%;float:left;margin:18px 0 0 55px;padding:0!important}
+.user_pic img{width:48px;height:48px;border-radius:50%}
 .user_pic:hover{border:1px solid #fff}
 
 
