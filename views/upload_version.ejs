@@ -5,75 +5,78 @@
     <title>七星博士后台管理系统</title>
     <link rel="stylesheet" type="text/css" href="/stylesheets/backstage.css">
     <script type="text/javascript" src="/javascripts/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/libs/layer/layer.js"></script>
 </head>
 
 <body>
+
 <div class="pop">
     <h3 class="pop_t">上传新版本</h3>
-    <ul class="pop_c clearfix">
+    <form method="post" id="frmVersion" enctype="multipart/form-data">
+        <ul class="pop_c clearfix">
+            <li class="clearfix">
+                <p class="col-2">选择类别</p>
+                <p class="col-4">
+                    <select class="select1" name="type" id="type">
+                        <option value="1">民用级-主机</option>
+                        <option value="2">民用级-从机</option>
+                        <option value="3">工业级</option>
+                    </select>
+                </p>
+                <p class="col-2 p_l_left">版本</p>
+                <p class="col-4">
+                    <input type="text" name="ver" id="ver"/>
+                </p>
+            </li>
 
-        <li class="clearfix">
-            <p class="col-2">选择类别</p>
-            <p class="col-4">
-                <select class="select1">
-                    <option value="1">民用级-主机</option>
-                    <option value="2">民用级-从机</option>
-                    <option value="3">工业级</option>
-                </select>
-            </p>
-            <p class="col-2 p_l_left">版本</p>
-            <p class="col-4">
-                <input type="text"/>
-            </p>
-        </li>
+            <li class="clearfix">
+                <p class="col-2">MD5</p>
+                <p class="col-10">
+                    <input type="text" name="md5" id="md5" />
+                </p>
+            </li>
 
-        <li class="clearfix">
-            <p class="col-2">MD5</p>
-            <p class="col-10">
-                <input type="text"/>
-            </p>
-        </li>
+            <li class="clearfix">
+                <p class="col-2">上传文件</p>
+                <div class="col-10 up_box">
+                    <a class="pop_btn_up">选择文件<input type="file" class="pop_file" id="uploadfile" /></a>
+                    <label class="pop_up_name1" id="filename">上传文件的名字</label>
+    <!--
+                    <div class="pop_up_speed">
+                        <p class="pop_up_name">xxx.xx（1.26M）</p>
+                        <div class="pop_up_bar"><span style="width:50%">&nbsp</span></div>
+                    </div>
 
-        <li class="clearfix">
-            <p class="col-2">上传文件</p>
-            <div class="col-10 up_box">
-                <a class="pop_btn_up">选择文件<input type="file" class="pop_file"/></a>
-                <label class="pop_up_name1">上传文件的名字</label>
-<!--
-                <div class="pop_up_speed">
-                    <p class="pop_up_name">xxx.xx（1.26M）</p>
-                    <div class="pop_up_bar"><span style="width:50%">&nbsp</span></div>
+                    <div class="pop_up_speed">
+                        <p class="pop_up_finish">xxx.xx（1.26M）上传完成！<a href="#"><img src="/images/ico_delete2.png" /></a></p>
+                        <div class="pop_up_bar"><span style="width:100%">&nbsp</span></div>
+                    </div>
+    -->
+
                 </div>
+            </li>
+            <li class="clearfix">
+                <p class="col-2">文件大小(KB)</p>
+                <p class="col-10">
+                    <input type="text" name="size" id="size"/>
+                </p>
+            </li>
 
-                <div class="pop_up_speed">
-                    <p class="pop_up_finish">xxx.xx（1.26M）上传完成！<a href="#"><img src="/images/ico_delete2.png" /></a></p>
-                    <div class="pop_up_bar"><span style="width:100%">&nbsp</span></div>
-                </div>
--->
-
-            </div>
-        </li>
-        <li class="clearfix">
-            <p class="col-2">文件大小</p>
-            <p class="col-10">
-                <input type="text"/>
-            </p>
-        </li>
-
-        <li class="clearfix">
-            <p class="col-2">更新日志</p>
-            <p class="col-10">
-                <textarea rows="3" placeholder="系统"/></textarea>
-                <textarea rows="1" placeholder="WLAN"/></textarea>
-            </p>
-        </li>
-    </ul>
-
+            <li class="clearfix">
+                <p class="col-2">更新日志</p>
+                <p class="col-10">
+                    <textarea rows="3" placeholder="系统" name="sys" id="sys"/></textarea>
+                    <textarea rows="1" placeholder="WLAN" name="wlan" id="wlan"/></textarea>
+                </p>
+            </li>
+        </ul>
+    </form>
     <div class="pop_f clearfix">
         <button id="btnSave" class="pop_btn_ok">保存</button>
         <button id="btnCancel" class="pop_btn_cancel">取消</button>
     </div>
 </div>
+
 </body>
 <script>
     $(function() {
@@ -82,7 +85,39 @@
         });
 
         $("#btnSave").click(function() {
-            alert("131321");
+            var ver = $("#ver").val();
+            if (ver == "") {
+                layer.msg("请输入版本号");
+                return;
+            }
+            var md5 = $("#md5").val();
+            if (md5 == "") {
+                layer.msg("请输入MD5");
+                return;
+            }
+            var uploadfile = $("#uploadfile").val();
+            if (uploadfile == "") {
+                layer.msg("请选择要上传的文件");
+                return;
+            }
+            var size = $("#size").val();
+            if (size == "") {
+                layer.msg("请输入文件大小(单位：KB)");
+                return;
+            }
+            layer.confirm('确定要提交新的版本?', {
+                btn: ['确定', '取消']
+            }, function () {
+                $("#frmVersion").attr("action", "/version/add");
+                $("#frmVersion").submit();
+            }, function () {});
+        });
+
+        $("#uploadfile").change(function() {
+            var file = $(this).val();
+            var fileName=file.replace(/^.+?\\([^\\]+?)(\.[^\.\\]*?)?$/gi,"$1");  //正则表达式获取文件名，不带后缀
+            var fileExt=file.replace(/.+\./,"");
+            $("#filename").text(fileName + "." + fileExt);
         });
     });
 </script>
