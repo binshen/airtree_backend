@@ -2,9 +2,15 @@
 module.exports = function (mongoose) {
 
     var version = new mongoose.Schema({
-        username: { type:String, required:true },
-        password: { type:String, required:true },
-        nickname: { type:String }
+        type: { type:Number, required:true },
+        ver: { type:String, required:true },
+        md5: { type:String },
+        size: { type:String },
+        developer: { type:String },
+        file: { type:String, required:true },
+        sys: { type:String },
+        wlan: { type:String },
+        created: { type:Date }
     });
     return mongoose.model('Version', version);
 };
