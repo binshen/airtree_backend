@@ -19,9 +19,9 @@
                 <p class="col-2">选择类别</p>
                 <p class="col-4">
                     <select class="select1" name="type" id="type">
-                        <option value="1">民用级-主机</option>
-                        <option value="2">民用级-从机</option>
-                        <option value="3">工业级</option>
+                        <option value="1" <% if(version.type==1) {%>selected<% }%>>民用级-主机</option>
+                        <option value="2" <% if(version.type==2) {%>selected<% }%>>民用级-从机</option>
+                        <option value="3" <% if(version.type==3) {%>selected<% }%>>工业级</option>
                     </select>
                 </p>
                 <p class="col-2 p_l_left">版本</p>
@@ -67,12 +67,8 @@
             <li class="clearfix">
                 <p class="col-2">更新日志</p>
                 <p class="col-10">
-                    <textarea rows="3" placeholder="系统" name="sys" id="sys"/>
-                        <%= version.sys %>
-                    </textarea>
-                    <textarea rows="1" placeholder="WLAN" name="wlan" id="wlan"/>
-                        <%= version.wlan %>
-                    </textarea>
+                    <textarea rows="3" placeholder="系统" name="sys" id="sys"/><%= version.sys %></textarea>
+                    <textarea rows="1" placeholder="WLAN" name="wlan" id="wlan"/><%= version.wlan %></textarea>
                 </p>
             </li>
         </ul>

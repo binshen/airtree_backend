@@ -19,7 +19,7 @@ module.exports = function (app, router, wrap, mongoose) {
 
 /*
     {
-        type: '1', ver: '1', md5: '2', size: '3', sys: '4', wlan: '5'
+        type: '1', ver: '1', md5: '2', dev: '3', sys: '4', wlan: '5'
     }
     {
         fieldname: 'uploadfile',
@@ -45,8 +45,17 @@ module.exports = function (app, router, wrap, mongoose) {
         } else {
             var doc = yield Version.findById(v_id).exec();
             if(doc != null) {
-                fs.unlinkSync(doc.path);
+                var path = __dirname + '/../public/files/' + doc.file;
+                if(fs.existsSync(path)) {
+                    fs.unlinkSync(path);
+                }
                 doc.created = Date.now();
+                doc.type = data.type;
+                doc.ver = data.ver;
+                doc.md5 = data.md5;
+                doc.dev = data.dev;
+                doc.sys = data.sys;
+                doc.wlan = data.wlan;
                 if(file != null) {
                     doc.size = Math.ceil(file.size / 1000);
                     doc.file = file.filename;
@@ -54,9 +63,7 @@ module.exports = function (app, router, wrap, mongoose) {
                 yield doc.save();
             }
         }
-
-        var user = req.session.login_user;
-        res.render('list_version', { page: "version", user: user });
+        res.redirect('/version/list');
     }));
 
     router.get('/upload/:v_id', wrap(function* (req, res, next) {
