@@ -50,7 +50,7 @@ app.use(expressPromise());
 
 //session
 var options = {
-  path: "/tmp/sessions/",
+  path: "tmp/sessions/",
   useAsync: true,
   reapInterval: 5000,
   maxAge: 10000
