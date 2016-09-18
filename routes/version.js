@@ -2,6 +2,7 @@
 var multer  = require('multer');
 var fs = require('fs');
 var moment = require('moment');
+var path = require('path');
 
 module.exports = function (app, router, wrap, mongoose) {
 
@@ -38,7 +39,7 @@ module.exports = function (app, router, wrap, mongoose) {
         var v_id = data.v_id;
         if(v_id == "") {
             data.size = Math.ceil(file.size / 1000);
-            data.file = file.filename;
+            data.file = file.filename + "." + path.extname(file.originalname);
             data.origin = file.originalname;
             data.created = Date.now();
             var doc = new Version(data);
@@ -59,7 +60,7 @@ module.exports = function (app, router, wrap, mongoose) {
                 doc.wlan = data.wlan;
                 if(file != null) {
                     doc.size = Math.ceil(file.size / 1000);
-                    doc.file = file.filename;
+                    doc.file = file.filename + "." + path.extname(file.originalname);
                     data.origin = file.originalname;
                 }
                 yield doc.save();
