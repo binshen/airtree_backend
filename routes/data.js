@@ -6,7 +6,9 @@ module.exports = function (app, router, wrap, mongoose) {
     router.get('/list', wrap(function* (req, res, next) {
         var mac = req.query.mac;
         var data = [];
-        if(mac != undefined) {
+        if(mac == "") {
+            data = yield Data.find({}).sort({'created': -1}).limit(10).exec()
+        } else if(mac != undefined) {
             data = yield Data.find({mac: mac.toLowerCase() }).sort({'created': -1}).limit(10).exec()
         } else {
             mac = "";
