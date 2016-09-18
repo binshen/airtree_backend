@@ -123,9 +123,9 @@
         $("#uploadfile").change(function() {
             var file = $(this).val();
             var fileName=file.replace(/^.+?\\([^\\]+?)(\.[^\.\\]*?)?$/gi,"$1");  //正则表达式获取文件名，不带后缀
-            //var fileExt=file.replace(/.+\./,"");
-            //$("#filename").text(fileName + "." + fileExt);
-            $("#filename").text(fileName);
+            var fileExt=file.replace(/.+\./,"");
+            $("#filename").text(fileName + "." + fileExt);
+            //$("#filename").text(fileName);
         });
     });
 </script>
