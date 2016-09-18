@@ -68,7 +68,7 @@
             <li class="clearfix">
                 <p class="col-3"><%= device[i].mac %></p>
                 <p class="col-3"><%= device[i].name %></p>
-                <p class="col-2"><%= device[i].status %></p>
+                <p class="col-2"><% if(device[i].status == 1) { %>从机<% } else { %>主机<% } %></p>
                 <p class="col-2 t_center"><%= device[i].ver1 %></p>
                 <p class="col-2 t_center"><%= device[i].ver2 %></p>
             </li>

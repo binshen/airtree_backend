@@ -59,7 +59,7 @@
                 </div>
                 <div class="col-3">
                     <p class="col-6"><%= data[i].mac %></p>
-                    <p class="col-6"><%= data[i].created %></p>
+                    <p class="col-6"><%= moment(data[i].created).format('YYYY-MM-DD hh:mm:ss') %></p>
                 </div>
             </li>
 

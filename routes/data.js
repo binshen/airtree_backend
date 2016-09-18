@@ -1,4 +1,6 @@
 
+var moment = require('moment');
+
 module.exports = function (app, router, wrap, mongoose) {
 
     var Data = mongoose.model('Data');
@@ -14,7 +16,7 @@ module.exports = function (app, router, wrap, mongoose) {
             mac = "";
         }
         var user = req.session.login_user;
-        res.render('list_data', { page: "data", user: user, data: data, mac: mac });
+        res.render('list_data', { page: "data", user: user, data: data, mac: mac, moment: moment });
     }));
 
     app.use('/data', router);
