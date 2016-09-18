@@ -8,10 +8,16 @@ module.exports = function (app, router, wrap, mongoose) {
         var password = req.body.password;
         var admin = yield Admin.findOne({username: username, password: password}).exec();
         if(admin != null) {
+            req.session.login_user = admin;
             return res.status(200).json({ success:true });
         } else {
             return res.status(200).json({ success:false });
         }
+    }));
+
+    router.post('/logout', wrap(function* (req, res, next) {
+        req.session.destroy();
+        res.render('index');
     }));
 
     router.get('/forget_psw', wrap(function* (req, res, next) {
