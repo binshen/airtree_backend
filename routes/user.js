@@ -15,7 +15,7 @@ module.exports = function (app, router, wrap, mongoose) {
         }
     }));
 
-    router.post('/logout', wrap(function* (req, res, next) {
+    router.get('/logout', wrap(function* (req, res, next) {
         req.session.destroy();
         res.render('index');
     }));
