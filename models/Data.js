@@ -17,6 +17,17 @@ module.exports = function (mongoose) {
         x12: { type:Number },
         x13: { type:Number },
         x14: { type:Number },
+        p1: { type:Number },
+        p2: { type:Number },
+        p3: { type:Number },
+        p4: { type:Number },
+        fei: { type:Number },
+        ferval: { type:Number },
+        aqi: { type:Number },
+        s: { type:Number },
+        rank: { type:Number },
+        ddv: { type:Number },
+        mcu: { type:Number },
         day: { type:String },
         created: { type:Number }
     }, {
