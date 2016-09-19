@@ -49,10 +49,6 @@ module.exports = function (app, router, wrap, mongoose) {
         } else {
             var doc = yield Version.findById(v_id).exec();
             if(doc != null) {
-                var path = __dirname + '/../public/files/' + doc.file;
-                if(fs.existsSync(path)) {
-                    fs.unlinkSync(path);
-                }
                 doc.created = Date.now();
                 doc.type = data.type;
                 doc.ver = data.ver;
@@ -61,6 +57,11 @@ module.exports = function (app, router, wrap, mongoose) {
                 doc.sys = data.sys;
                 doc.wlan = data.wlan;
                 if(file != null) {
+                    var path = __dirname + '/../public/files/' + doc.file;
+                    if(fs.existsSync(path)) {
+                        fs.unlinkSync(path);
+                    }
+
                     doc.size = Math.ceil(file.size / 1000);
                     var fullname = file.filename + f_path.extname(file.originalname);
                     fs.renameSync(__dirname + '/../public/files/' + file.filename, __dirname + '/../public/files/' + fullname);
