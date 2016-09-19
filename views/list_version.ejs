@@ -7,19 +7,19 @@
 
         <ul class="list1">
             <li class="clearfix top">
-                <p class="col-4">类别</p>
+                <p class="col-3">类别</p>
                 <p class="col-4">版本</p>
                 <p class="col-1 t_center">开发者</p>
-                <p class="col-2 t_center">发布时间</p>
+                <p class="col-3 t_center">发布时间</p>
                 <p class="col-1">编辑</p>
             </li>
 
             <% for(var i in version) { %>
             <li class="clearfix">
-                <p class="col-4"><% if(version[i].type==1){ %>民用级-主机<% } else if(version[i].type==2){ %>民用级-从机<% } else { %>工业级<% } %></p>
+                <p class="col-3"><% if(version[i].type==1){ %>民用级-主机<% } else if(version[i].type==2){ %>民用级-从机<% } else { %>工业级<% } %></p>
                 <p class="col-4"><%= version[i].ver %></p>
                 <p class="col-1 t_center"><%= version[i].dev %></p>
-                <p class="col-2 t_center"><%= moment(version[i].created).format('YYYY-MM-DD hh:mm:ss') %></p>
+                <p class="col-3 t_center"><%= moment(version[i].created).format('YYYY-MM-DD hh:mm:ss') %></p>
                 <p class="col-1 clearfix">
                     <a class="btn_revise" href="/version/upload/<%= version[i]._id %>"></a>
                     <a class="btn_delete" href="javascript:void(0)" onclick="deleteVersion('<%= version[i]._id %>');"></a>
