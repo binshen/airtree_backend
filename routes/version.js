@@ -51,12 +51,11 @@ module.exports = function (app, router, wrap, mongoose) {
             var doc = new Version(data);
             yield doc.save();
         } else {
-            var doc = yield Version.findById(v_id).lean().exec();
+            var doc = yield Version.findById(v_id).exec();
             if(doc != null) {
                 doc.created = Date.now();
                 doc.type = data.type;
                 doc.ver = data.ver;
-                doc.md5 = data.md5;
                 doc.dev = data.dev;
                 doc.sys = data.sys;
                 doc.wlan = data.wlan;
