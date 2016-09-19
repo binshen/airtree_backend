@@ -1,5 +1,5 @@
 
-var common = require('./utils/common');
+var common = require('../utils/common');
 
 module.exports = function (app, router, wrap, mongoose) {
 
