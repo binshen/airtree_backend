@@ -51,7 +51,7 @@ module.exports = function (app, router, wrap, mongoose) {
             var doc = new Version(data);
             yield doc.save();
         } else {
-            var doc = yield Version.findById(v_id).exec();
+            var doc = yield Version.findById(v_id).lean().exec();
             if(doc != null) {
                 doc.created = Date.now();
                 doc.type = data.type;
