@@ -3,6 +3,9 @@ var multer  = require('multer');
 var fs = require('fs');
 var moment = require('moment');
 var f_path = require('path');
+var common = require('../utils/common');
+
+var bashPath = __dirname + '/../public/files/';
 
 module.exports = function (app, router, wrap, mongoose) {
 
@@ -40,10 +43,11 @@ module.exports = function (app, router, wrap, mongoose) {
         if(v_id == "") {
             data.size = Math.ceil(file.size / 1000);
             var fullname = file.filename + f_path.extname(file.originalname);
-            fs.renameSync(__dirname + '/../public/files/' + file.filename, __dirname + '/../public/files/' + fullname);
+            fs.renameSync(bashPath + file.filename, bashPath + fullname);
             data.file = fullname;
             data.origin = file.originalname;
             data.created = Date.now();
+            data.md5 = common.getFileMD5(bashPath + fullname);
             var doc = new Version(data);
             yield doc.save();
         } else {
@@ -57,16 +61,17 @@ module.exports = function (app, router, wrap, mongoose) {
                 doc.sys = data.sys;
                 doc.wlan = data.wlan;
                 if(file != null) {
-                    var path = __dirname + '/../public/files/' + doc.file;
+                    var path = bashPath + doc.file;
                     if(fs.existsSync(path)) {
                         fs.unlinkSync(path);
                     }
 
                     doc.size = Math.ceil(file.size / 1000);
                     var fullname = file.filename + f_path.extname(file.originalname);
-                    fs.renameSync(__dirname + '/../public/files/' + file.filename, __dirname + '/../public/files/' + fullname);
+                    fs.renameSync(bashPath + file.filename, bashPath + fullname);
                     doc.file = fullname;
-                    data.origin = file.originalname;
+                    doc.md5 = common.getFileMD5(bashPath + fullname);
+                    doc.origin = file.originalname;
                 }
                 yield doc.save();
             }
@@ -83,7 +88,7 @@ module.exports = function (app, router, wrap, mongoose) {
     router.get('/delete/:v_id', wrap(function* (req, res, next) {
         var v_id = req.params.v_id;
         var version = yield Version.findById(v_id).exec();
-        var path = __dirname + '/../public/files/' + version.file;
+        var path = bashPath + version.file;
         if(fs.existsSync(path)) {
             fs.unlinkSync(path);
         }

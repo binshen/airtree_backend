@@ -4,6 +4,7 @@
 
 var crypto = require('crypto');
 var request = require('request');
+var fs = require('fs');
 
 module.exports.md5 = function(value) {
     return crypto.createHash('md5').update(value).digest("hex");
@@ -16,4 +17,11 @@ module.exports.sendMsg = function(tel, msg, callback) {
         if(err) return callback(err);
         callback(null, body);
     });
+};
+
+module.exports.getFileMD5 = function(filepath) {
+    var buffer = fs.readFileSync(filepath);
+    var fsHash = crypto.createHash('md5');
+    fsHash.update(buffer);
+    return fsHash.digest('hex');
 };

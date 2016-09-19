@@ -29,14 +29,14 @@
                     <input type="text" name="ver" id="ver" value="<%= version.ver %>"/>
                 </p>
             </li>
-
+<!--
             <li class="clearfix">
                 <p class="col-2">MD5</p>
                 <p class="col-10">
                     <input type="text" name="md5" id="md5" value="<%= version.md5 %>"/>
                 </p>
             </li>
-
+-->
             <li class="clearfix">
                 <p class="col-2">上传文件</p>
                 <div class="col-10 up_box">
@@ -92,11 +92,11 @@
                 layer.msg("请输入版本号");
                 return;
             }
-            var md5 = $("#md5").val();
-            if (md5 == "") {
-                layer.msg("请输入MD5");
-                return;
-            }
+//            var md5 = $("#md5").val();
+//            if (md5 == "") {
+//                layer.msg("请输入MD5");
+//                return;
+//            }
             var v_id = $("#v_id").val();
             var uploadfile = $("#uploadfile").val();
             if (v_id == "" && uploadfile == "") {
