@@ -126,8 +126,9 @@ body{background-color:#d8d8d8 !important;font-family:"Microsoft Yahei"!important
 .pop_c li{padding:15px 0}
 .pop_c li select{width:100%;height:40px;line-height:40px;padding:10px;border-radius:3px}
 
-.pop_c li input{line-height:40px;height:40px;background-color:#fff;padding:0 10px;width:100%;border-radius:3px}
-.pop_c li textarea{background-color:#fff;padding:10px;border-radius:3px;width:100%;line-height:26px;margin-bottom:10px}
+.pop_c li input{line-height:40px;height:40px;background-color:#fff;padding:0 10px;width:100%;border-radius:3px;border:1px solid #aeadad}
+.pop_c li textarea{background-color:#fff;padding:10px;border-radius:3px;width:100%;line-height:26px;margin-bottom:10px;border:1px solid #aeadad}
+.pop_c li select{border:1px solid #aeadad}
 
 .up_box{padding:15px 10px;border:1px solid #eee;border-radius:3px}
 
