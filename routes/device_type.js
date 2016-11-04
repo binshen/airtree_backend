@@ -10,8 +10,16 @@ module.exports = function (app, router, wrap, mongoose) {
 
     router.get('/list', wrap(function* (req, res, next) {
 
-        var deviceTypes = yield DeviceType.find({}).exec();
-        res.render('list_device_type', { page: "device_type", user: req.session.login_user, device_type: deviceTypes });
+        var mac = req.query.mac;
+        var deviceTypes = [];
+        if(mac == "") {
+            deviceTypes = yield DeviceType.find({}).exec()
+        } else if(mac != undefined) {
+            deviceTypes = yield DeviceType.find({mac: mac.toLowerCase() }).exec()
+        } else {
+            mac = "";
+        }
+        res.render('list_device_type', { page: "device_type", user: req.session.login_user, device_type: deviceTypes, mac: mac });
     }));
 
     router.get('/add', wrap(function* (req, res, next) {

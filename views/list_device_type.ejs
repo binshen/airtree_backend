@@ -6,9 +6,9 @@
 
     <li class="clearfix">
         <p class="col-2">MAC搜索</p>
-        <p class="col-10"><input type="text" class="key_in"/></p>
+        <p class="col-10"><input id="inputMac" type="text" value="<%= mac %>" class="key_in" placeholder="请输入mac地址"/></p>
     </li>
-    <li><button href="#" class="btn_search">搜索</button></li>
+    <li><button id="btnSearch" class="btn_search">搜索</button></li>
 
 </ul>
 
@@ -47,6 +47,10 @@
 
 <script>
     $(function() {
+        $("#btnSearch").click(function() {
+            window.location.href="/device_type/list?mac=" + $("#inputMac").val();
+        });
+
         $("#btnAddDeviceType").click(function() {
             $.get("/device_type/add", function(html) {
                 layer.open({
