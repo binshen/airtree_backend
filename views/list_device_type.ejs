@@ -12,7 +12,12 @@
 
 </ul>
 
-<h3 class="title1 clearfix"><div class="buttons clearfix"><a href="#">批量导出</a><a href="#">批量导入</a><a href="新增popup.html">添加</a></div>设备列表</h3>
+<h3 class="title1 clearfix">
+    <div class="buttons clearfix">
+        <a href="#" id="btnImport">批量导出</a>
+        <a href="#" id="btnExport">批量导入</a>
+        <a href="javascript:void(0);" id="btnAddDeviceType">添加</a>
+    </div>设备列表</h3>
 
 <ul class="list1 t_center">
     <li class="clearfix top">
@@ -37,3 +42,24 @@
 
 <%- include layouts/footer.ejs %>
 </body>
+
+<script>
+    $("#btnAddDeviceType").click(function() {
+        $.get("/device_type/add", function(html) {
+            layer.open({
+                type: 1,
+                skin: 'layui-layer-rim', //加上边框
+                area: ['800px', '450px'], //宽高
+                content: html
+            });
+        });
+    });
+
+    $("#btnImport").click(function() {
+        layer.msg("开发中，请耐心等待");
+    });
+
+    $("#btnExport").click(function() {
+        layer.msg("开发中，请耐心等待");
+    });
+</script>

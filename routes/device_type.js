@@ -14,5 +14,10 @@ module.exports = function (app, router, wrap, mongoose) {
         res.render('list_device_type', { page: "device_type", user: req.session.login_user, device_type: deviceTypes });
     }));
 
+    router.get('/add', wrap(function* (req, res, next) {
+
+        res.render('add_device_type', {  });
+    }));
+
     app.use('/device_type', router);
 };
