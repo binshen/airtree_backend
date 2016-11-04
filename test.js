@@ -1,9 +1,9 @@
 // var size = Math.ceil(121634 / 1000);
 // console.log(size);
 //
-var common = require('./utils/common');
-console.log(common.md5("1"));
-console.log(common.getFileMD5('/Users/bin.shen/Desktop/download/Master.UI.1.2016.8.11.01s copy.rar'));
+// var common = require('./utils/common');
+// console.log(common.md5("1"));
+// console.log(common.getFileMD5('/Users/bin.shen/Desktop/download/Master.UI.1.2016.8.11.01s copy.rar'));
 
 // var crypto = require('crypto');
 // var fs = require('fs');
@@ -27,3 +27,7 @@ console.log(common.getFileMD5('/Users/bin.shen/Desktop/download/Master.UI.1.2016
 // fsHash.update(buffer);
 // var md5 = fsHash.digest('hex');
 // console.log("文件的MD5是：%s", md5);
+
+// var dt = 1478136089668;
+// var date = new Date(dt);
+// console.log(date);

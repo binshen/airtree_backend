@@ -11,7 +11,7 @@ module.exports = function (app, router, wrap, mongoose) {
         if(mac == "") {
             data = yield Data.find({}).sort({'created': -1}).limit(10).exec()
         } else if(mac != undefined) {
-            data = yield Data.find({mac: mac.toLowerCase() }).sort({'created': -1}).limit(10).exec()
+            data = yield Data.find({mac: { "$regex": mac.toLowerCase(), $options:"i" } }).sort({'created': -1}).limit(10).exec()
         } else {
             mac = "";
         }

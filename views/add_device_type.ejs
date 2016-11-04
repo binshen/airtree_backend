@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>七星博士后台管理系统</title>
+    <link rel="stylesheet" type="text/css" href="css/backstage.css">
+</head>
+
+<body>
+<div class="pop">
+    <h3 class="pop_t">添加环境数型号预设值</h3>
+    <ul class="pop_c clearfix">
+
+        <li class="clearfix">
+            <p class="col-2">输入MAC地址</p>
+            <p class="col-10"> <input type="text" id="device_mac"/></p>
+        </li>
+
+        <li class="clearfix">
+            <p class="col-2">选择类别</p>
+            <p class="col-10">
+                <select class="select1" id="device_type">
+                    <option value="1">主机</option>
+                    <option value="0">从机</option>
+                </select>
+            </p>
+        </li>
+    </ul>
+
+    <div class="pop_f clearfix">
+        <button class="pop_btn_ok">保存</button>
+        <button class="pop_btn_cancel">取消</button>
+    </div>
+
+</div>
+<script type="application/javascript">
+    $(function() {
+        $(".pop_btn_ok").click(function() {
+            var mac = $("#device_mac").val();
+            if(mac == "") {
+                layer.msg("请输入mac地址");
+                return;
+            }
+            var type = $("#device_type").val();
+            $.post("/device_type/save", {mac: mac, type: type}, function(data) {
+                window.location.href = "/device_type/list";
+            });
+        });
+
+        $(".pop_btn_cancel").click(function() {
+            layer.closeAll();
+        });
+    });
+</script>
+</body>
+</html>
