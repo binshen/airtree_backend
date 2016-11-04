@@ -54,8 +54,7 @@
         $("#btnAddDeviceType").click(function() {
             $.get("/device_type/add", function(html) {
                 layer.open({
-                    type: 1,
-                    skin: 'layui-layer-rim', //加上边框
+                    type: 3,
                     area: ['800px', '450px'], //宽高
                     content: html
                 });
