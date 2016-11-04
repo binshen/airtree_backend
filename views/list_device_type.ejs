@@ -31,7 +31,7 @@
         <li class="clearfix">
             <p class="col-6"><%= device_type[i].mac %></p>
             <p class="col-4"><% if(device_type[i].type == 1) { %>主机<% } else { %>从机<% } %></p>
-            <p class="col-2"><a href="">删除</a></p>
+            <p class="col-2"><a href="javascript:void(0)" onclick="deleteRow('<%= device_type[i].mac %>');">删除</a></p>
         </li>
 
     <% } %>
@@ -46,22 +46,36 @@
 </body>
 
 <script>
-    $("#btnAddDeviceType").click(function() {
-        $.get("/device_type/add", function(html) {
-            layer.open({
-                type: 1,
-                skin: 'layui-layer-rim', //加上边框
-                area: ['800px', '450px'], //宽高
-                content: html
+    $(function() {
+        $("#btnAddDeviceType").click(function() {
+            $.get("/device_type/add", function(html) {
+                layer.open({
+                    type: 1,
+                    skin: 'layui-layer-rim', //加上边框
+                    area: ['800px', '450px'], //宽高
+                    content: html
+                });
             });
+        });
+
+        $("#btnImport").click(function() {
+            layer.msg("开发中，请耐心等待");
+        });
+
+        $("#btnExport").click(function() {
+            layer.msg("开发中，请耐心等待");
         });
     });
 
-    $("#btnImport").click(function() {
-        layer.msg("开发中，请耐心等待");
-    });
+    function deleteRow(mac) {
+        layer.confirm('确定要删除该机器吗？', {
+            btn: ['确定','取消'] //按钮
+        }, function(){
+            $.post("/device_type/delete", {mac: mac}, function(data) {
+                window.location.href = "/device_type/list";
+            });
+        }, function(){
 
-    $("#btnExport").click(function() {
-        layer.msg("开发中，请耐心等待");
-    });
+        });
+    }
 </script>

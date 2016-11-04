@@ -24,16 +24,16 @@ module.exports = function (app, router, wrap, mongoose) {
         var type = req.body.type;
 
         var doc = new DeviceType({ mac: mac.toLowerCase(), type: type });
-        yield doc.save().exec();
+        yield doc.save();
 
         res.json({ success: 1 });
     }));
 
     router.post('/delete', wrap(function* (req, res, next) {
-        var mac = req.query.mac;
+        var mac = req.body.mac;
 
         var doc = yield DeviceType.findOne({mac: mac}).exec();
-        yield doc.remove().exec();
+        yield doc.remove();
 
         res.json({ success: 1 });
     }));

@@ -43,7 +43,7 @@
             }
             var type = $("#device_type").val();
             $.post("/device_type/save", {mac: mac, type: type}, function(data) {
-                window.location.reload();
+                window.location.href = "/device_type/list";
             });
         });
 
