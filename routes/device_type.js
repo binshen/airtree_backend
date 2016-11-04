@@ -32,7 +32,7 @@ module.exports = function (app, router, wrap, mongoose) {
     router.post('/delete', wrap(function* (req, res, next) {
         var mac = req.body.mac;
 
-        var doc = yield DeviceType.findOne({mac: mac}).exec();
+        var doc = yield DeviceType.findOne({ mac: mac.toLowerCase() }).exec();
         yield doc.remove();
 
         res.json({ success: 1 });
