@@ -21,15 +21,17 @@
 
 <ul class="list1 t_center">
     <li class="clearfix top">
-        <p class="col-8">MAC地址</p>
+        <p class="col-6">MAC地址</p>
         <p class="col-4">类别</p>
+        <p class="col-2">操作</p>
     </li>
 
     <% for(var i in device_type) { %>
 
         <li class="clearfix">
-            <p class="col-8"><%= device_type[i].mac %></p>
+            <p class="col-6"><%= device_type[i].mac %></p>
             <p class="col-4"><% if(device_type[i].type == 1) { %>主机<% } else { %>从机<% } %></p>
+            <p class="col-2"><a href="">删除</a></p>
         </li>
 
     <% } %>

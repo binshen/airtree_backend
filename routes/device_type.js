@@ -19,5 +19,24 @@ module.exports = function (app, router, wrap, mongoose) {
         res.render('add_device_type', {  });
     }));
 
+    router.post('/save', wrap(function* (req, res, next) {
+        var mac = req.body.mac;
+        var type = req.body.type;
+
+        var doc = new DeviceType({ mac: mac.toLowerCase(), type: type });
+        yield doc.save().exec();
+
+        res.json({ success: 1 });
+    }));
+
+    router.post('/delete', wrap(function* (req, res, next) {
+        var mac = req.query.mac;
+
+        var doc = yield DeviceType.findOne({mac: mac}).exec();
+        yield doc.remove().exec();
+
+        res.json({ success: 1 });
+    }));
+
     app.use('/device_type', router);
 };
