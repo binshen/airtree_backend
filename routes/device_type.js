@@ -22,9 +22,9 @@ module.exports = function (app, router, wrap, mongoose) {
         }
         */
         if(mac != null && mac != "") {
-            deviceTypes = yield DeviceType.find({mac: mac.toLowerCase() }).exec()
+            deviceTypes = yield DeviceType.find({mac:  { "$regex": mac.toLowerCase(),$options:"i" } }).sort({'created': -1}).exec()
         } else {
-            deviceTypes = yield DeviceType.find({}).exec()
+            deviceTypes = yield DeviceType.find({}).sort({'created': -1}).exec();
             mac = ""
         }
         res.render('list_device_type', { page: "device_type", user: req.session.login_user, device_type: deviceTypes, mac: mac });
@@ -39,7 +39,7 @@ module.exports = function (app, router, wrap, mongoose) {
         var mac = req.body.mac;
         var type = req.body.type;
 
-        var doc = new DeviceType({ mac: mac.toLowerCase(), type: type });
+        var doc = new DeviceType({ mac: mac.toLowerCase(), type: type, created: Date.now() });
         yield doc.save();
 
         res.json({ success: 1 });

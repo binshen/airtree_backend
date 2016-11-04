@@ -6,7 +6,8 @@ module.exports = function (mongoose) {
 
     var deviceType = new mongoose.Schema({
         mac: { type:String, required:true },
-        type: { type:Number }
+        type: { type:Number },
+        created: { type:Number }
     }, {
         collection: 'device_types',
         id: false
