@@ -20,14 +20,14 @@
         <p class="col-4">类别</p>
     </li>
 
-    <li class="clearfix">
-        <p class="col-8">xxxx</p>
-        <p class="col-4">主机</p>
-    </li>
-    <li class="clearfix">
-        <p class="col-8">xxxx</p>
-        <p class="col-4">从机</p>
-    </li>
+    <% for(var i in device_type) { %>
+
+        <li class="clearfix">
+            <p class="col-8"><%= device_type[i].mac %></p>
+            <p class="col-4"><% if(device_type[i].type == 1) { %>主机<% } else { %>从机<% } %></p>
+        </li>
+
+    <% } %>
 
 </ul>
 

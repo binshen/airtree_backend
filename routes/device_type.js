@@ -11,9 +11,7 @@ module.exports = function (app, router, wrap, mongoose) {
     router.get('/list', wrap(function* (req, res, next) {
 
         var deviceTypes = yield DeviceType.find({}).exec();
-        console.log(deviceTypes);
-
-        res.render('list_device_type', { page: "device_type", user: req.session.login_user });
+        res.render('list_device_type', { page: "device_type", user: req.session.login_user, device_type: deviceTypes });
     }));
 
     app.use('/device_type', router);
