@@ -12,12 +12,20 @@ module.exports = function (app, router, wrap, mongoose) {
 
         var mac = req.query.mac;
         var deviceTypes = [];
+        /*
         if(mac == "") {
             deviceTypes = yield DeviceType.find({}).exec()
         } else if(mac != undefined) {
             deviceTypes = yield DeviceType.find({mac: mac.toLowerCase() }).exec()
         } else {
             mac = "";
+        }
+        */
+        if(mac != null && mac != "") {
+            deviceTypes = yield DeviceType.find({mac: mac.toLowerCase() }).exec()
+        } else {
+            deviceTypes = yield DeviceType.find({}).exec()
+            mac = ""
         }
         res.render('list_device_type', { page: "device_type", user: req.session.login_user, device_type: deviceTypes, mac: mac });
     }));
