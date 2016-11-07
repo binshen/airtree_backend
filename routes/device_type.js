@@ -56,7 +56,7 @@ module.exports = function (app, router, wrap, mongoose) {
         res.json({ success: 1 });
     }));
 
-    router.get('/download', wrap(function* (req, res, next) {
+    router.get('/export', wrap(function* (req, res, next) {
 
         var data = [['MAC地址', '机型']];
         var docs = yield DeviceType.find().exec();
