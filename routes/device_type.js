@@ -3,6 +3,8 @@
  */
 
 //https://www.npmjs.com/package/node-xlsx
+var xlsx = require('node-xlsx').default;
+var fs = require('fs');
 
 module.exports = function (app, router, wrap, mongoose) {
 
@@ -52,6 +54,19 @@ module.exports = function (app, router, wrap, mongoose) {
         yield doc.remove();
 
         res.json({ success: 1 });
+    }));
+
+    router.get('/download', wrap(function* (req, res, next) {
+
+        var data = [['MAC地址', '机型']];
+        var docs = yield DeviceType.find().exec();
+        docs.forEach(function(doc) {
+            data.push([doc.mac, doc.type]);
+        });
+        var file = xlsx.build([{name: "环境数机型预设值列表", data: data}]);
+        var filepath = __dirname + "/../public/files/device_type_list.xlsx";
+        fs.writeFileSync(filepath, file, 'binary');
+        res.download(filepath);
     }));
 
     app.use('/device_type', router);

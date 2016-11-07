@@ -31,3 +31,11 @@
 // var dt = 1478136089668;
 // var date = new Date(dt);
 // console.log(date);
+
+var xlsx = require('node-xlsx').default;
+var fs = require('fs');
+
+var data = [['MAC地址', '机型']];
+var file = xlsx.build([{name: "mySheetName", data: data}]);
+console.log(file);
+fs.writeFileSync('user.xlsx', file, 'binary')
