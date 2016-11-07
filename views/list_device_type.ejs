@@ -17,6 +17,7 @@
         <a href="javascript:void(0);" id="btnExport">批量导出</a>
         <a href="javascript:void(0);" id="btnImport">批量导入</a>
         <a href="javascript:void(0);" id="btnAddDeviceType">添加</a>
+        <input type="file" id="uploadFile" style="display: none" />
     </div>设备列表</h3>
 
 <ul class="list1 t_center">
@@ -63,6 +64,7 @@
 
         $("#btnImport").click(function() {
             layer.msg("开发中，请耐心等待");
+            //$("#uploadFile").click();
         });
 
         $("#btnExport").click(function() {
